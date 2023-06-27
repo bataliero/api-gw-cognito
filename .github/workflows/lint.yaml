@@ -1,0 +1,34 @@
+
+name: 'Linting'
+
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+
+# # permissions:
+#   contents: read
+
+on: [push]
+
+# permission can be added at job level or workflow level    
+permissions: 
+    # write-all
+# id-token: write # This is required for requesting the JWT
+# contents: read # This is required for actions/checkout
+# pull-requests: write # todo czy to jest ptorzebne?
+# actions: read
+
+    # required for all workflows
+    security-events: write
+
+    # only required for workflows in private repositories
+    # actions: read
+    # contents: read
+
+jobs:
+
+  ci-terraform:
+    uses: bataliero/terraform-modules-s3/.github/workflows/lint2.yaml@main
+
+
